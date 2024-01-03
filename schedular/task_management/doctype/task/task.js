@@ -4,10 +4,16 @@
 frappe.ui.form.on("Task", {
     // Triggers when value of 'stage' is changed.
 	stage: function(frm){
-        if (frm.doc.stage === 'Completed'){
-            // Checks that completeion date is entered or not when stage changed to Completed.
+        if (frm.doc.stage === 'Reviewed'){
+            // Checks that completion date is entered or not when stage changed to Reviewed, else reverted back.
             if (!frm.doc.completed_on_date){
-                frm.set_value('stage', 'In Progress')
+                frm.call({
+                    doc: frm.doc,
+                    method: 'revert_stage',
+                    callback: function(stage){
+                        frm.set_value('stage', stage['message'])
+                    }
+                })
                 frm.save()
                 frappe.throw('Enter the completion date.')
             }
@@ -23,4 +29,19 @@ frappe.ui.form.on("Task", {
             frappe.throw('Enter valid date.')
         }
     },
+
+    // Sends email to the assigned employees, first time when task is created.
+    before_save: function(frm){
+        if(frm.is_new()){
+            frm.call({
+                doc: frm.doc,
+                method: 'send_email',
+                args: {
+                    emp_no: frm.doc.emp_assigned,
+                    subject: frm.doc.name,
+                    desc: frm.doc.task_desc
+                },
+            })
+        }
+    }
 });

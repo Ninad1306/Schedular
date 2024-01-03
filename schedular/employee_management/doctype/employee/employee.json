@@ -17,6 +17,7 @@
   "section_break_eomg",
   "dob",
   "age",
+  "email",
   "emp_no",
   "emp_role",
   "amended_from"
@@ -93,12 +94,17 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-03 12:01:03.942184",
+ "modified": "2024-01-03 15:23:34.812696",
  "modified_by": "Administrator",
  "module": "Employee Management",
  "name": "Employee",

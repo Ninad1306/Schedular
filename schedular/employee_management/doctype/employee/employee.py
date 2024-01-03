@@ -11,7 +11,6 @@ from frappe.utils import today, get_abbr
 class Employee(Document):
 	# This method sets the full name and employee number in the document.
 	def before_save(self):
-		# self.full_name = f'{self.first_name} {self.middle_name or ""} {self.last_name or ""}'
 		self.emp_no = self.name
 
 	# This method checks if there exists employee with the same name.

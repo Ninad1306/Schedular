@@ -62,7 +62,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Stage",
-   "options": "Open\nIn Progress\nCompleted",
+   "options": "Open\nIn Progress\nCompleted\nReviewed",
    "reqd": 1
   },
   {
@@ -81,7 +81,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-03 12:00:26.376172",
+ "modified": "2024-01-03 15:00:54.616519",
  "modified_by": "Administrator",
  "module": "Task Management",
  "name": "Task",

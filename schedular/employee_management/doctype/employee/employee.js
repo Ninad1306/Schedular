@@ -11,7 +11,7 @@ frappe.ui.form.on("Employee", {
         frm.set_value('full_name', frm.doc.first_name + ' ' + frm.doc.last_name);
     },
     // Based on the dob the age field is set.
-    dob: function (frm) {
+    dob: function (frm){
 		if (frm.doc.dob) {
             var dob = frappe.datetime.str_to_obj(frm.doc.dob);
             var today = frappe.datetime.now_datetime();
@@ -31,5 +31,5 @@ frappe.ui.form.on("Employee", {
                 }
             })
         }
-    }
+    },
 });
