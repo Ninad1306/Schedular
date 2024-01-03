@@ -2,7 +2,7 @@
 
 This app is based on frappe framework and is used to schedule and assign various tasks to employees.
 
-Features:
+## Features:
 ## Employee Management
 1. Can create employee with specified role.
 2. Employee number self generated.
