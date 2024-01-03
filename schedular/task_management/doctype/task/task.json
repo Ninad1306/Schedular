@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Task-.####",
+ "creation": "2024-01-02 11:19:38.504977",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "task_name",
+  "due_date",
+  "stage",
+  "priority_level",
+  "completed_on_date",
+  "emp_assigned",
+  "column_break_addg",
+  "task_desc",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "task_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Task name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Due Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "priority_level",
+   "fieldtype": "Select",
+   "label": "Priority Level",
+   "options": "low\nmedium\nhigh"
+  },
+  {
+   "fieldname": "task_desc",
+   "fieldtype": "Long Text",
+   "in_list_view": 1,
+   "label": "Task Description"
+  },
+  {
+   "fieldname": "column_break_addg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Task",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "stage",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Stage",
+   "options": "Open\nIn Progress\nCompleted",
+   "reqd": 1
+  },
+  {
+   "fieldname": "emp_assigned",
+   "fieldtype": "Link",
+   "label": "Employee Assigned",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "completed_on_date",
+   "fieldtype": "Date",
+   "label": "Completed On"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-03 12:00:26.376172",
+ "modified_by": "Administrator",
+ "module": "Task Management",
+ "name": "Task",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
