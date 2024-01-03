@@ -12,7 +12,8 @@ This app is based on frappe framework and is used to schedule and assign various
 1. Task can be created and can be assigned to employee.
 2. Can set the due date, priority level, stage (open, in progress, completed) for tasks.
 3. Can add the task description for employee reference.
-4. Can also be viewed in report view. 
+4. Email is sent to the assigned employee regarding the task details.
+5. Can also be viewed in report view. 
 
 #### License
 
