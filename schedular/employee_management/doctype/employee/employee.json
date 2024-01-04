@@ -20,7 +20,12 @@
   "email",
   "emp_no",
   "emp_role",
-  "amended_from"
+  "amended_from",
+  "lft",
+  "rgt",
+  "is_group",
+  "old_parent",
+  "parent_employee"
  ],
  "fields": [
   {
@@ -99,16 +104,52 @@
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "Email"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Old Parent",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "parent_employee",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Parent Employee",
+   "options": "Employee"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-03 15:23:34.812696",
+ "modified": "2024-01-04 10:55:09.737836",
  "modified_by": "Administrator",
  "module": "Employee Management",
  "name": "Employee",
  "naming_rule": "Expression (old style)",
+ "nsm_parent_field": "parent_employee",
  "owner": "Administrator",
  "permissions": [
   {

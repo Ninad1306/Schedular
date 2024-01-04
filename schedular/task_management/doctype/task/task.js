@@ -22,6 +22,10 @@ frappe.ui.form.on("Task", {
                 frm.save('Submit')
             }
         }
+
+        if(frm.doc.stage === 'Completed'){
+            frm.set_value('completed_on_date', frappe.datetime.now_datetime())
+        }
     },
     // Throws error when due date is a date before than today's date.
     due_date: function(frm){
@@ -38,10 +42,10 @@ frappe.ui.form.on("Task", {
                 method: 'send_email',
                 args: {
                     emp_no: frm.doc.emp_assigned,
-                    subject: frm.doc.name,
-                    desc: frm.doc.task_desc
+                    subject: frm.doc.task_name,
+                    desc: frm.doc.task_desc || '',
                 },
             })
         }
-    }
+    },
 });

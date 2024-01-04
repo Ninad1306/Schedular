@@ -3,8 +3,6 @@
 
 import frappe
 from frappe.model.document import Document
-from frappe.utils.background_jobs import enqueue
-
 
 class Task(Document):
 	# Stage is reverted to the last stage before the document is saved.

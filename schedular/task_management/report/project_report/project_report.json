@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-01-04 12:20:54.247052",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2024-01-04 13:58:07.293054",
+ "modified_by": "Administrator",
+ "module": "Task Management",
+ "name": "Project Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "select project_name_task as \"Project Name\", (select count(*) from `tabTask` as T2 \n                                            where stage='Reviewed'\n                                            and T2.project_name_task=T1.project_name_task \n                                            group by project_name_task) / count(*) * 100 as \"Progress (In Percent)\",\n(select group_concat(task_name SEPARATOR ', ') from `tabTask` as T3 \n            where T3.project_name_task=T1.project_name_task and T3.stage!='Reviewed') as 'Tasks Remaining',\n\n(select group_concat(task_name SEPARATOR ', ') from `tabTask` as T4\n            where T4.project_name_task=T1.project_name_task and T4.stage='Reviewed') as 'Tasks Completed'\n\nfrom `tabTask` as T1\ngroup by project_name_task",
+ "ref_doctype": "Task",
+ "report_name": "Project Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}
