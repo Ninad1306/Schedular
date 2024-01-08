@@ -23,4 +23,5 @@ This app is based on frappe framework and is used to schedule and assign various
 3. Project summary i.e. shows total tasks and tasks reviewed in bar graph.
 4. Employees per project i.e. shows how many employees are there per project.
 5. Task completion timeline i.e. shows task completed daily.
+6. Project progress can also be viewed.
 
