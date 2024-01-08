@@ -1,0 +1,27 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2024-01-08 15:12:08.958246",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2024-01-08 15:14:35.355387",
+ "modified_by": "Administrator",
+ "module": "Task Management",
+ "name": "Project-Employee Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "select emp_assigned, count(*) as \"Task Per Employee\", \n(select full_name from `tabEmployee` where emp_no=emp_assigned ) as Name \nfrom `tabTask` \ngroup by emp_assigned",
+ "ref_doctype": "Task",
+ "report_name": "Project-Employee Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

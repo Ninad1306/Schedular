@@ -1,0 +1,33 @@
+{
+ "chart_name": "Task Per Employee",
+ "chart_type": "Report",
+ "creation": "2024-01-08 15:23:55.709138",
+ "custom_options": "",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "dynamic_filters_json": "{}",
+ "filters_json": "{}",
+ "group_by_type": "Count",
+ "idx": 0,
+ "is_public": 0,
+ "is_standard": 1,
+ "modified": "2024-01-08 15:37:38.798244",
+ "modified_by": "Administrator",
+ "module": "Task Management",
+ "name": "Task Per Employee",
+ "number_of_groups": 0,
+ "owner": "Administrator",
+ "report_name": "Task-Employee Report",
+ "roles": [],
+ "time_interval": "Yearly",
+ "timeseries": 0,
+ "timespan": "Last Year",
+ "type": "Pie",
+ "use_report_chart": 0,
+ "x_field": "name",
+ "y_axis": [
+  {
+   "y_field": "task_per_employee"
+  }
+ ]
+}
