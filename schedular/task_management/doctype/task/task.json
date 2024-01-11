@@ -29,14 +29,13 @@
    "fieldname": "due_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Due Date",
-   "reqd": 1
+   "label": "Due Date"
   },
   {
    "fieldname": "priority_level",
    "fieldtype": "Select",
    "label": "Priority Level",
-   "options": "low\nmedium\nhigh"
+   "options": "low\nmedium\nhigh\nUrgent"
   },
   {
    "fieldname": "task_desc",
@@ -63,15 +62,14 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Stage",
-   "options": "Open\nIn Progress\nCompleted\nReviewed",
+   "options": "Backlog\nTodo\nIn Progress\nIn Review\nDone\nCancelled\nDuplicate\nTriage",
    "reqd": 1
   },
   {
    "fieldname": "emp_assigned",
-   "fieldtype": "Link",
+   "fieldtype": "Table MultiSelect",
    "label": "Employee Assigned",
-   "options": "Employee",
-   "reqd": 1
+   "options": "Assigned Employee"
   },
   {
    "fieldname": "completed_on_date",
@@ -81,14 +79,16 @@
   },
   {
    "fieldname": "project_name_task",
-   "fieldtype": "Data",
-   "label": "Project Name"
+   "fieldtype": "Link",
+   "label": "Project Name",
+   "options": "Project",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-04 13:04:03.959970",
+ "modified": "2024-01-10 13:14:21.252040",
  "modified_by": "Administrator",
  "module": "Task Management",
  "name": "Task",

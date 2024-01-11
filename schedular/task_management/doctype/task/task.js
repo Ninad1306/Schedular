@@ -4,27 +4,17 @@
 frappe.ui.form.on("Task", {
     // Triggers when value of 'stage' is changed.
 	stage: function(frm){
-        if (frm.doc.stage === 'Reviewed'){
-            // Checks that completion date is entered or not when stage changed to Reviewed, else reverted back.
-            if (!frm.doc.completed_on_date){
-                frm.call({
-                    doc: frm.doc,
-                    method: 'revert_stage',
-                    callback: function(stage){
-                        frm.set_value('stage', stage['message'])
-                    }
-                })
-                frm.save()
-                frappe.throw('Enter the completion date.')
-            }
-            // If completion date is entered then task is submitted.
-            else{
-                frm.save('Submit')
-            }
-        }
-
-        if(frm.doc.stage === 'Completed'){
+        // When the stage is changed to 'done' the completion date is set and form is saved.
+        if (frm.doc.stage === 'Done'){
+            frm.toggle_enable("stage", true)
             frm.set_value('completed_on_date', frappe.datetime.now_datetime())
+            frm.save()
+        }
+        // When stage is changed to 'todo', some fields become mandatory.
+        else if (frm.doc.stage === 'Todo'){
+            frm.toggle_reqd('due_date',true)
+            frm.toggle_reqd('priority_level',true)
+            frm.toggle_reqd('emp_assigned',true)
         }
     },
     // Throws error when due date is a date before than today's date.
@@ -34,18 +24,18 @@ frappe.ui.form.on("Task", {
         }
     },
 
-    // Sends email to the assigned employees, first time when task is created.
-    before_save: function(frm){
-        if(frm.is_new()){
-            frm.call({
-                doc: frm.doc,
-                method: 'send_email',
-                args: {
-                    emp_no: frm.doc.emp_assigned,
-                    subject: frm.doc.task_name,
-                    desc: frm.doc.task_desc || '',
-                },
-            })
-        }
-    },
+    // // Sends email to the assigned employees, first time when task is created.
+    // before_save: function(frm){
+    //     if(frm.is_new()){
+    //         frm.call({
+    //             doc: frm.doc,
+    //             method: 'send_email',
+    //             args: {
+    //                 emp_no: frm.doc.emp_assigned,
+    //                 subject: frm.doc.task_name,
+    //                 desc: frm.doc.task_desc || '',
+    //             },
+    //         })
+    //     }
+    // },
 });

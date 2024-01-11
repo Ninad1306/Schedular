@@ -5,6 +5,11 @@ import frappe
 from frappe.model.document import Document
 
 class Task(Document):
+	# Sends mail to the reviewer to review the task when stage changed to 'In Review'
+	def before_save(self):
+		if self.stage == 'In Review':
+			self.send_email(self.task_name, self.task_desc)
+
 	# Stage is reverted to the last stage before the document is saved.
 	@frappe.whitelist()
 	def revert_stage(self):
@@ -13,7 +18,8 @@ class Task(Document):
 	
 	# Email is sent about the task details to the assigned employee.
 	@frappe.whitelist()
-	def send_email(self, emp_no, subject, desc):
+	def send_email(self, subject, desc):
+		emp_no = frappe.db.get_value('Employee',{'emp_role': 'Reviewer'}, ['emp_no'])
 		employee_doc = frappe.get_doc('Employee', emp_no)
 		frappe.sendmail(recipients=employee_doc.email, subject=subject, message= desc, now=True)
 		

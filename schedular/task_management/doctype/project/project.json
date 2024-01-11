@@ -37,7 +37,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-04 11:14:57.459104",
+ "modified": "2024-01-10 15:13:50.855443",
  "modified_by": "Administrator",
  "module": "Task Management",
  "name": "Project",
@@ -57,7 +57,9 @@
    "write": 1
   }
  ],
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "project_name"
 }
