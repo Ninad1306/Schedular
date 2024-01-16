@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.utils import today
 
 class Task(Document):
 	# Sends mail to the reviewer to review the task when stage changed to 'In Review'
@@ -22,4 +23,11 @@ class Task(Document):
 		emp_no = frappe.db.get_value('Employee',{'emp_role': 'Reviewer'}, ['emp_no'])
 		employee_doc = frappe.get_doc('Employee', emp_no)
 		frappe.sendmail(recipients=employee_doc.email, subject=subject, message= desc, now=True)
+	
+	def validate(self):
+		if self.due_date < today():
+			frappe.throw('Enter valid date.')
+		
+		if self.stage == 'Done' and not self.completed_on_date:
+			self.completed_on_date = today()
 		
