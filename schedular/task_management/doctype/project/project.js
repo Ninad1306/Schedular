@@ -11,7 +11,7 @@ frappe.ui.form.on("Project", {
                 })
             }
             else{
-                frappe.throw('Please save the document.')
+                frappe.throw('Before creating a task, project has to be created.')
             }
         });
 
