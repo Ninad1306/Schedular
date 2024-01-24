@@ -7,11 +7,11 @@ frappe.ui.form.on("Project", {
         frm.add_custom_button(__('Add Task'), function(){
             if (!frm.is_new()){
                 frappe.new_doc('Task',{
-                    project_name_task: frm.doc.project_name
+                    project_name_task: frm.doc.name
                 })
             }
             else{
-                frappe.throw('Before creating a task, project has to be created.')
+                frappe.throw('Please create a project first.')
             }
         });
 

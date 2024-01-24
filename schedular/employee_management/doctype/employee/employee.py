@@ -13,7 +13,7 @@ class Employee(Document):
 	def before_save(self):
 		self.emp_no = self.name
 		abbr_name = get_abbr(self.middle_name, max_len=1)
-		self.full_name = self.first_name+ ' ' + abbr_name+ ' ' + self.last_name
+		self.full_name = self.first_name+ ' ' + abbr_name + ' ' + self.last_name
 
 	# This method checks if there exists employee with the same name.
 	def before_submit(self):
@@ -28,11 +28,6 @@ class Employee(Document):
         )
 		if exists:
 			frappe.throw("There is an active employee for this name.")
-
-	# Returns the abbrevation to the client side script.
-	@frappe.whitelist()
-	def get_abbrevation(self):
-		return get_abbr(self.middle_name, max_len=1)
 		
 	def validate(self):
 		d1 = datetime.strptime(self.dob, "%Y-%m-%d")

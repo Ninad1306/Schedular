@@ -8,7 +8,6 @@ frappe.ui.form.on("Task", {
         if (frm.doc.stage === 'Done'){
             frm.toggle_enable("stage", true)
             frm.set_value('completed_on_date', frappe.datetime.now_datetime())
-            frm.save()
         }
         // When stage is changed to 'todo', some fields become mandatory.
         else if (frm.doc.stage === 'Todo'){

@@ -17,8 +17,7 @@ class Task(Document):
 		old_doc = Document.get_doc_before_save(self)
 		return old_doc.stage
 	
-	# Email is sent about the task details to the assigned employee.
-	@frappe.whitelist()
+	# Email is sent to reviewer when stage is changed to 'In Review'.
 	def send_email(self, subject, desc):
 		emp_no = frappe.db.get_value('Employee',{'emp_role': 'Reviewer'}, ['emp_no'])
 		employee_doc = frappe.get_doc('Employee', emp_no)
@@ -28,6 +27,10 @@ class Task(Document):
 		if self.due_date < today():
 			frappe.throw('Enter valid date.')
 		
-		if self.stage == 'Done' and not self.completed_on_date:
-			self.completed_on_date = today()
+		old_doc = self.get_doc_before_save()
+		if self.stage == 'Done':
+			if old_doc.stage!='Done':
+				self.completed_on_date = today()
+			else:
+				self.completed_on_date = old_doc.completed_on_date
 		
