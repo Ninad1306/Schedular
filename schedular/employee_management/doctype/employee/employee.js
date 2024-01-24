@@ -4,23 +4,29 @@
 frappe.ui.form.on("Employee", {
     // Changes full name when first name changes
     first_name: function(frm){
-        frm.set_value('full_name', frm.doc.first_name + ' ' + frm.doc.last_name);
+        if (frm.doc.middle_name.trim().length > 0) {
+            frm.set_value('full_name', frm.doc.first_name  + ' ' +frm.doc.middle_name.toUpperCase()[0] + ' ' + (frm.doc.last_name || ''));
+        } 
+        else{
+            frm.set_value('full_name', frm.doc.first_name + ' ' + (frm.doc.last_name || ''));
+        }
+        
     },
     // Changes full name when middle name changes
     middle_name: function (frm) {
         if (frm.doc.middle_name.trim().length > 0) {
-            frm.call({
-                doc: frm.doc,
-                method: 'get_abbrevation',
-                callback: function (abbr) {
-                    frm.set_value('full_name', frm.doc.first_name + ' ' + abbr['message'] + ' ' + frm.doc.last_name);
-                }
-            })
+            frm.set_value('full_name', (frm.doc.first_name || '') + ' ' +frm.doc.middle_name.toUpperCase()[0] + ' ' + (frm.doc.last_name || ''));
         }
     },
     // Changes full name when last name changes
     last_name: function(frm){
-        frm.set_value('full_name', frm.doc.first_name + ' ' + frm.doc.last_name);
+        if (frm.doc.middle_name.trim().length > 0) {
+            frm.set_value('full_name', (frm.doc.first_name || '') + ' ' +frm.doc.middle_name.toUpperCase()[0] + ' ' + frm.doc.last_name);
+        }
+        else{
+            frm.set_value('full_name', (frm.doc.first_name || '') + ' ' + frm.doc.last_name);
+        }
+        
     },
 
     // Based on the dob the age field is set.
