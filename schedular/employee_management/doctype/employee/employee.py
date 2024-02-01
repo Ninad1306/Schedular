@@ -4,8 +4,7 @@
 import frappe
 from frappe.model.document import Document
 from frappe.model.docstatus import DocStatus
-from frappe.utils import today, get_abbr
-from datetime import datetime
+from frappe.utils import get_abbr, days_diff
 
 
 class Employee(Document):
@@ -30,11 +29,8 @@ class Employee(Document):
 			frappe.throw("There is an active employee for this name.")
 		
 	def validate(self):
-		d1 = datetime.strptime(self.dob, "%Y-%m-%d")
-		d2 = datetime.strptime(today(), "%Y-%m-%d")
-		delta = d2-d1
-		age = delta.days // 365
+		age = days_diff(None,self.dob) // 365
 		if age<18:
-			frappe.throw('Enter valid date of birth.')
+			frappe.throw('Employee age should be 18 or greater.')
 		else:
 			self.age = age
