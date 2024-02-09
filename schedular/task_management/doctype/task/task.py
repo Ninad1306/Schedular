@@ -18,13 +18,15 @@ class Task(Document):
 	
 	def validate(self):
 		old_task_doc = self.get_doc_before_save()
-
-		if self.due_date!=old_task_doc.due_date and self.due_date<today():
+		if self.due_date<today():
 			frappe.throw('Enter valid date.')
+		if old_task_doc:
+			if self.due_date!=old_task_doc.due_date and self.due_date<today():
+				frappe.throw('Enter valid date.')
 		
-		if self.stage == 'Done':
-			if old_task_doc.stage!='Done':
-				self.completed_on_date = today()
-			else:
-				self.completed_on_date = old_task_doc.completed_on_date
+			if self.stage == 'Done':
+				if old_task_doc.stage!='Done':
+					self.completed_on_date = today()
+				else:
+					self.completed_on_date = old_task_doc.completed_on_date
 		

@@ -27,7 +27,8 @@
    "fieldname": "first_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "First Name"
+   "label": "First Name",
+   "reqd": 1
   },
   {
    "fieldname": "middle_name",
@@ -54,13 +55,15 @@
    "fieldname": "dob",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "DOB"
+   "label": "DOB",
+   "reqd": 1
   },
   {
    "fieldname": "emp_no",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Employee Number"
+   "label": "Employee Number",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_column",
@@ -82,12 +85,14 @@
    "fieldname": "emp_role",
    "fieldtype": "Select",
    "label": "Role",
-   "options": "Junior Developer\nSenior Developer\nReviewer"
+   "options": "Junior Developer\nSenior Developer\nReviewer",
+   "reqd": 1
   },
   {
    "fieldname": "email",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Email",
+   "reqd": 1
   },
   {
    "fieldname": "amended_from",
@@ -103,7 +108,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-01-10 13:38:29.769466",
+ "modified": "2024-02-09 17:08:34.377878",
  "modified_by": "Administrator",
  "module": "Employee Management",
  "name": "Employee",
